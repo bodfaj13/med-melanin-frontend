@@ -268,6 +268,29 @@ const Dashboard = () => {
     return { completed, total };
   };
 
+  const { completed, total } = getCompletedTasks();
+
+  // Helper function to get today's date in consistent format
+  const getTodayDate = () => {
+    return new Date().toLocaleDateString();
+  };
+
+  // Helper function to count today's entries
+  const getTodayEntriesCount = () => {
+    const todayDate = getTodayDate();
+    const todayEntries = finalSymptomData.filter((s: SymptomEntry) => s.date === todayDate);
+
+    // Debug log to help identify issues
+    console.log('Dashboard Debug:', {
+      todayDate,
+      totalEntries: finalSymptomData.length,
+      todayEntriesCount: todayEntries.length,
+      allDates: finalSymptomData.map((s: SymptomEntry) => s.date),
+    });
+
+    return todayEntries.length;
+  };
+
   const handleQuickAction = (action: string) => {
     switch (action) {
       case 'brochure':
@@ -313,8 +336,6 @@ const Dashboard = () => {
       });
     }
   };
-
-  const { completed, total } = getCompletedTasks();
 
   // Handle URL parameters for aftercare guide modal
   useEffect(() => {
@@ -604,14 +625,7 @@ const Dashboard = () => {
                     {symptomLoading ? (
                       <Skeleton height='16px' width='80px' />
                     ) : (
-                      <>
-                        {
-                          finalSymptomData.filter(
-                            (s: SymptomEntry) => s.date === new Date().toLocaleDateString()
-                          ).length
-                        }{' '}
-                        today
-                      </>
+                      <>{getTodayEntriesCount()} today</>
                     )}
                   </StatHelpText>
                 </Stat>

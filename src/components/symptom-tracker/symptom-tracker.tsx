@@ -160,6 +160,19 @@ const SymptomTracker = () => {
     return olderAvg - recentAvg; // Positive = improving
   };
 
+  // Helper function to get today's date in consistent format
+  const getTodayDate = () => {
+    return new Date().toLocaleDateString();
+  };
+
+  // Helper function to count today's entries
+  const getTodayEntriesCount = () => {
+    const todayDate = getTodayDate();
+    const todayEntries = symptomEntries.filter(s => s.date === todayDate);
+
+    return todayEntries.length;
+  };
+
   return (
     <Box>
       {/* Header */}
@@ -212,7 +225,7 @@ const SymptomTracker = () => {
                 Today's Entries
               </Text>
               <Text fontSize='2xl' fontWeight='bold' color='blue.500'>
-                {entries.filter(s => s.date === new Date().toLocaleDateString()).length}
+                {entriesLoading ? '...' : getTodayEntriesCount()}
               </Text>
               <Text fontSize='sm' color='gray.600'>
                 symptom logs
