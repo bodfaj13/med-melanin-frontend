@@ -2,6 +2,12 @@
 
 A comprehensive React-based frontend application for tracking patient recovery progress after medical procedures, built with modern web technologies.
 
+## 🎥 Demo Video
+
+📹 **[Watch the Quick Demo Video](https://drive.google.com/file/d/1zeq98yj3zYoXdTtCA6zjNCNGgg-RV-N8/view?usp=sharing)**
+
+See the application in action with a comprehensive walkthrough of all features.
+
 ## 🚀 Tech Stack
 
 - **Framework**: React 18 with TypeScript
