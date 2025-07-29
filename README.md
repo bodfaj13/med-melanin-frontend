@@ -14,6 +14,7 @@ A comprehensive React-based frontend application for tracking patient recovery p
 - **Data Fetching**: TanStack Query (React Query) for server state management
 - **Styling**: CSS-in-JS with Chakra UI's styling system
 - **Development**: ESLint + TypeScript for code quality
+- **Code Quality**: Husky for Git hooks, Prettier for code formatting
 
 ## 📁 Project Structure
 
@@ -137,8 +138,9 @@ VITE_APP_NAME=Recovery Tracker
 ### Code Style
 
 - **TypeScript**: Strict typing for all components and functions
-- **ESLint**: Enforced code quality rules
-- **Prettier**: Consistent code formatting
+- **ESLint**: Enforced code quality rules with custom configuration
+- **Prettier**: Consistent code formatting with automatic formatting on save
+- **Husky**: Git hooks for pre-commit linting and formatting
 - **Component Naming**: PascalCase for components, camelCase for functions
 
 ### Component Structure
@@ -237,8 +239,10 @@ npm run test:watch   # Run tests in watch mode
 - `@types/react-dom`: TypeScript definitions
 - `@vitejs/plugin-react`: Vite React plugin
 - `typescript`: Type checking
-- `eslint`: Code linting
+- `eslint`: Code linting with custom rules
 - `prettier`: Code formatting
+- `husky`: Git hooks for pre-commit checks
+- `lint-staged`: Run linters on staged files
 
 ## 🚀 Deployment
 
@@ -263,8 +267,9 @@ Ensure all required environment variables are set in your production environment
 
 1. **TypeScript Errors**: Run `npm run type-check` to identify issues
 2. **Linting Errors**: Run `npm run lint:fix` to auto-fix issues
-3. **Build Failures**: Check for missing dependencies or type errors
-4. **API Connection**: Verify backend server is running and accessible
+3. **Pre-commit Hooks**: Husky will automatically run linting and formatting on commit
+4. **Build Failures**: Check for missing dependencies or type errors
+5. **API Connection**: Verify backend server is running and accessible
 
 ### Development Tips
 
