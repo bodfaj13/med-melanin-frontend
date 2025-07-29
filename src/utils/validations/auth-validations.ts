@@ -15,11 +15,11 @@ export const signUpSchema = yup.object({
   password: yup
     .string()
     .required('Password is required')
-    .min(4, 'Password must be at least 4 characters'),
-  // .matches(
-  //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-  //   'Password must contain at least one uppercase letter, one lowercase letter, and one number'
-  // ),
+    .min(8, 'Password must be at least 8 characters')
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+      'Password must contain at least one uppercase letter, one lowercase letter, and one number'
+    ),
   confirmPassword: yup
     .string()
     .required('Please confirm your password')
@@ -72,7 +72,11 @@ export const changePasswordSchema = yup.object({
   newPassword: yup
     .string()
     .required('New password is required')
-    .min(8, 'New password must be at least 8 characters long')
+    .min(8, 'Password must be at least 8 characters')
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+      'Password must contain at least one uppercase letter, one lowercase letter, and one number'
+    )
     .test(
       'different-from-current',
       'New password must be different from current password',
